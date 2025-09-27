@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InvisBaka</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/crt.css" />
+    <script type="module">
+      const themeToggle = document.getElementById("theme-toggle");
+      const contrastToggle = document.getElementById("increase-contrast");
+      const crtToggle = document.getElementById("toggle-crt");
+
+      themeToggle.addEventListener("click", () => {
+        document.documentElement.classList.toggle("light");
+        document.documentElement.classList.toggle("dark");
+      });
+      contrastToggle.addEventListener("click", () => {
+        document.documentElement.classList.toggle("high-contrast");
+      });
+      crtToggle.addEventListener("click", () => {
+        document.querySelector("body").classList.toggle("crt");
+      });
+
+      document.getElementById("sans").addEventListener("click", () => {
+        document.documentElement.classList.remove("serif", "mono", "dyslexic");
+        document.documentElement.classList.add("sans");
+      });
+
+      document.getElementById("serif").addEventListener("click", () => {
+        document.documentElement.classList.remove("sans", "mono", "dyslexic");
+        document.documentElement.classList.add("serif");
+      });
+
+      document.getElementById("mono").addEventListener("click", () => {
+        document.documentElement.classList.remove("sans", "serif", "dyslexic");
+        document.documentElement.classList.add("mono");
+      });
+
+      document.getElementById("dyslexic").addEventListener("click", () => {
+        document.documentElement.classList.remove("sans", "serif", "mono");
+        document.documentElement.classList.add("dyslexic");
+      });
+
+      const a11yPanel = document.querySelector(".a11y-panel");
+      const showA11y = document.querySelector("#open-a11y");
+      const closeA11y = document.querySelector("#close-a11y");
+
+      showA11y.addEventListener("click", () => {
+        a11yPanel.hidden = false;
+        showA11y.hidden = true;
+      });
+
+      closeA11y.addEventListener("click", () => {
+        a11yPanel.hidden = true;
+        showA11y.hidden = false;
+      });
+
+      if (
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      ) {
+        document.documentElement.classList.add("dark");
+        document.documentElement.classList.remove("light");
+      } else {
+        document.documentElement.classList.add("light");
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+  </head>
+  <body class="crt">
+    <header>
+      <h1 class="primary" style="font-style: italic">
+        ~~Welcome to the Dungeon~~
+      </h1>
+
+      <a href="/miku-shrine/"
+        >Visit my Miku Shrine (Warning: Light Mode and no contrast/font
+        settings)</a
+      >
+
+      <button
+        id="open-a11y"
+        class="link"
+        style="font-weight: normal"
+        hidden
+        aria-hidden="true"
+      >
+        Accessibility Settings
+      </button>
+      <div class="a11y-panel" aria-hidden="true">
+        <h2>
+          Accessibility Settings
+
+          <button
+            id="close-a11y"
+            class="link"
+            style="font-weight: normal; float: right; padding-left: 1rem"
+          >
+            hide
+          </button>
+        </h2>
+        <div>
+          <button id="theme-toggle" class="link">Toggle Theme</button>
+          <button id="increase-contrast" class="link">Toggle Contrast</button>
+          <button id="toggle-crt" class="link">Toggle CRT Effect</button>
+          <div>
+            <p>Font Family:</p>
+            <div style="display: flex; flex-direction: row; gap: 0.5rem">
+              <button id="sans" class="link sans">Sans</button>
+              <button id="serif" class="link serif">Serif</button>
+              <button id="mono" class="link mono">Mono</button>
+              <button id="dyslexic" class="link dyslexic">Dyslexic</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <noscript>
+        <style>
+          /* You can't really use the buttons there without JavaScript */
+          .a11y-panel {
+            display: none;
+          }
+          #open-a11y {
+            display: none;
+          }
+        </style>
+      </noscript>
+    </header>
+
+    <main
+      style="margin: 0.2rem; display: flex; flex-direction: column; gap: 2rem"
+    >
+      <p>
+        BTW this page is very in construction, so it looks kinda boring (also
+        cuz i kinda don't wanna ruin accessibility, and im shit at design)
+      </p>
+      <section>
+        <h2>About Me</h2>
+        <ul>
+          <li><strong>Name:</strong> <em>InvisBaka</em></li>
+          <li>
+            <strong>Pronouns:</strong> <em>She/Her</em> or
+            <em>They/Them</em> (She/Her is preferred but both are fine)
+          </li>
+          <li><strong>Age:</strong> <em>18</em></li>
+          <li><strong>MBTI Personality Type:</strong> <em>INTP</em></li>
+          <li>
+            <strong>Languages Spoken:</strong> <em>English</em> (I know other
+            languages but rarely use them online)
+          </li>
+          <li>
+            <strong>Hobbies:</strong>
+            <em>software development, anime, a small number of games</em>
+          </li>
+        </ul>
+
+        <p style="padding-top: 0.5rem">
+          I'm probably <em>transfem</em> or <em>femme-leaning nonbinary</em>
+        </p>
+      </section>
+      <section>
+        <h2>DNI (Do Not Interact)</h2>
+        <p>racists, sexists, homophobes, transphobes, xenophobes, abelists</p>
+      </section>
+      <section>
+        <h2>Recently Watched or Currently Watching</h2>
+        <ul>
+          <li>Watanare</li>
+          <li>Bloom into You</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Favorite Media (prolly more, forgor)</h2>
+        <ul>
+          <li>Kaguya-sama: Love Is War</li>
+          <li>Re:Zero</li>
+          <li>KonoSuba: God's Blessing on This Wonderful World!</li>
+          <li>Project Sekai: Colorful Stage! feat. Hatsune Miku</li>
+          <li>Minecraft</li>
+          <li>Team Fortress 2</li>
+          <li>Class of 09</li>
+        </ul>
+        <p>
+          Half finished HL2, and Portal, but my windows PC is dead, and macs
+          can't run them :(
+        </p>
+      </section>
+
+      <section>
+        <h2>Socials</h2>
+        <ul>
+          <li>
+            <strong>Bluesky:</strong>
+            <a href="https://bsky.app/profile/invisbaka.bsky.social">
+              @invisbaka.bsky.social
+            </a>
+          </li>
+          <li>
+            <strong>Discord:</strong>
+            <a href="https://discord.com/users/1163511304372355112/"
+              >@invisbaka</a
+            >
+          </li>
+          <li>
+            <strong>Reddit:</strong>
+            <a href="https://www.reddit.com/user/invisbaka/">u/InvisBaka</a>
+          </li>
+          <li>
+            <strong>Public Email:</strong>
+            <a href="mailto:bakuretsu@waifu.club">bakuretsu@waifu.club</a>
+            (before someone asks, ion use this for anything important)
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <hr/ >
+
+    <footer>
+      <p style="text-align: center; font-size: 0.8rem">
+        Licensed under
+        <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
+      </p>
+      <p style="text-align: center; font-size: 0.5rem">
+        Except for the dyslexic font, which is SIL-OFL, see
+        <a href="https://opendyslexic.org/">OpenDyslexic Page</a>
+      </p>
+    </footer>
+  </body>
+</html>

@@ -47,7 +47,7 @@
       text-decoration: underline;
     }
   }
-
+  /* #region font */
   .sans {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
@@ -67,6 +67,9 @@
     font-family: "OpenDyslexic", Arial, sans-serif;
   }
 
+  /* #endregion */
+
+  /* #region color */
   .primary {
     color: var(--primary);
   }
@@ -112,12 +115,15 @@
     background-color: var(--accent-dark);
   }
 
+  /* #endregion */
+
   h1,
   h2,
   h3 {
     line-height: 1.2;
   }
 
+  /* #region background color and links */
   .light {
     body {
       color: var(--text);
@@ -186,6 +192,8 @@
     }
   }
 
+  /* #endregion */
+
   #open-a11y {
     position: absolute;
     top: 10px;
@@ -206,6 +214,22 @@
     padding: 1rem;
 
     border: 1px solid gray;
+
+    .dark & {
+      background-color: var(--background-dark);
+    }
+
+    .light & {
+      background-color: var(--background);
+    }
+
+    .dark.high-contrast & {
+      background-color: var(--background-dark-contrast);
+    }
+
+    .light.high-contrast & {
+      background-color: var(--background-light-contrast);
+    }
 
     div {
       display: flex;

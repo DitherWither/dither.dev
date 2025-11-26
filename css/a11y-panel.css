@@ -1,0 +1,57 @@
+.a11y-panel {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	z-index: 1000;
+	padding: 1rem;
+
+	background-color: var(--background-color);
+
+	border: 1px solid gray;
+
+	h2 {
+		margin-top: 0.25rem;
+	}
+
+	div {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	button {
+		all: unset;
+		color: var(--text-color-link);
+
+		text-decoration: none;
+
+		&:hover {
+			color: var(--text-color-link-active);
+			text-decoration: underline;
+		}
+	}
+
+	@media (width < 960px) {
+		position: static;
+	}
+}
+
+#open-a11y.shown {
+	all: unset;
+	color: var(--text-color-link);
+
+	text-decoration: none;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	z-index: 1000;
+	padding: 1rem;
+
+	@media (width < 960px) {
+		position: static;
+	}
+
+	&:hover {
+		text-decoration: underline;
+	}
+}

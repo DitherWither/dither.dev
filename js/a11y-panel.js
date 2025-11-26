@@ -5,24 +5,25 @@ const crtToggle = document.getElementById("toggle-crt");
 themeToggle.addEventListener("click", () => {
 	document.documentElement.classList.toggle("light");
 	document.documentElement.classList.toggle("dark");
-	localStorage.setItem(
-		"mode",
-		localStorage.getItem("mode") == "dark" ? "light" : "dark"
-	);
+	const newMode = localStorage.getItem("mode") == "dark" ? "light" : "dark";
+	localStorage.setItem("mode", newMode);
+	themeToggle.textContent = `${newMode == "dark" ? "Light" : "Dark"} Mode`;
 });
 contrastToggle.addEventListener("click", () => {
 	document.documentElement.classList.toggle("high-contrast");
-	localStorage.setItem(
-		"contrast",
-		localStorage.getItem("contrast") == "high" ? "normal" : "high"
-	);
+	const newSetting =
+		localStorage.getItem("contrast") == "high" ? "standard" : "high";
+	localStorage.setItem("contrast", newSetting);
+	contrastToggle.textContent = `${
+		newSetting == "high" ? "Standard" : "High"
+	} Contrast`;
 });
 crtToggle.addEventListener("click", () => {
 	document.querySelector("body").classList.toggle("crt");
-	localStorage.setItem(
-		"crt",
-		localStorage.getItem("crt") == "yes" ? "no" : "yes"
-	);
+	const newSetting = localStorage.getItem("crt") == "yes" ? "no" : "yes";
+	localStorage.setItem("crt", newSetting);
+	crtToggle.textContent =
+		newSetting == "yes" ? "Turn off CRT Effect" : "Turn on CRT Effect";
 });
 
 document.getElementById("sans").addEventListener("click", () => {
@@ -72,7 +73,7 @@ console.log("test");
 
 if (firstVisit) {
 	localStorage.setItem("hasVisited", "yes");
-	localStorage.setItem("contrast", "normal");
+	localStorage.setItem("contrast", "standard");
 	localStorage.setItem("crt", "yes");
 	localStorage.setItem("show-panel", "yes");
 	localStorage.setItem("font", "sans");
@@ -102,9 +103,11 @@ if (firstVisit) {
 	if (mode != "dark") {
 		document.documentElement.classList.add("light");
 		document.documentElement.classList.remove("dark");
+		themeToggle.textContent = "Dark Mode";
 	} else {
 		document.documentElement.classList.add("dark");
 		document.documentElement.classList.remove("light");
+		themeToggle.innerHTML = "Light Mode";
 	}
 
 	if (showPanel == "no") {
@@ -115,10 +118,12 @@ if (firstVisit) {
 
 	if (contrast == "high") {
 		document.documentElement.classList.add("high-contrast");
+		contrastToggle.textContent = "Standard Contrast";
 	}
 
 	if (isCrt == "yes") {
 		document.querySelector("body").classList.add("crt");
+		crtToggle.textContent = "Turn off CRT Effect";
 	}
 
 	// set the font

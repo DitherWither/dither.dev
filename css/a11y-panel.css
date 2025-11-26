@@ -13,10 +13,14 @@
 		margin-top: 0.25rem;
 	}
 
-	div {
+	> div {
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
+
+		> button {
+			padding: 0.5rem 1rem;
+		}
 	}
 
 	button {
@@ -28,6 +32,35 @@
 		&:hover {
 			color: var(--text-color-link-active);
 			text-decoration: underline;
+		}
+	}
+
+	.font-panel {
+		display: grid;
+		height: 4rem;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+
+		button {
+			/* to make sure that brightness works correctly */
+			background-color: var(--background-color);
+			/* to make previews work correctly */
+			font-family: var(--font-family);
+			padding: auto;
+			margin: 0;
+			text-align: center;
+			border: 1px solid var(--primary-color);
+			box-shadow: 1px inset var(--primary-color);
+		}
+
+		button:hover {
+			filter: brightness(80%);
+		}
+
+		button:first-of-type {
+			border-radius: 20% 0 0 20% / 50% 10% 10% 50%;
+		}
+		button:last-of-type {
+			border-radius: 0 20% 20% 0 / 10% 50% 50% 10%;
 		}
 	}
 

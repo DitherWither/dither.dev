@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="{{ metadata.language }}" style="dark">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>{{ title or metadata.title }}</title>
+		<meta name="description" content="{{ description or metadata.description }}">
+		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
+
+		<meta name="generator" content="{{ eleventy.generator }}">
+
+		<style>{% include "css/index.css" %}</style>
+		<style>{% include "css/a11y-panel.css" %}</style>
+		<style>{% include "css/crt.css" %}</style>
+
+		{#- Render the CSS bundle using inlined CSS (for the fastest site performance in production) #}
+		<style>{% getBundle "css" %}</style>
+
+		{#- Add the heading-anchors web component to the JavaScript bundle #}
+		<script type="module">{% include "node_modules/@zachleat/heading-anchors/heading-anchors.js" %}</script>
+
+		<script type="module">{% include "js/a11y-panel.js" %}</script>
+	</head>
+	<body>
+		<a href="#main" id="skip-link" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<h1>
+				<a href="/" style="font-style: italic; text-decoration: none">
+    	    ~~Welcome to the Dungeon~~
+				</a>
+      </h1>
+
+			{#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
+			<nav>
+				<h2 class="visually-hidden">Top level navigation menu</h2>
+				<ul class="nav">
+				{%- for entry in collections.all | eleventyNavigation %}
+					<li class="nav-item"><a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a></li>
+				{%- endfor %}
+					<li class="nav-item"><a href="/miku-shrine/">Miku Shrine</a></li>
+				</ul>
+			</nav>
+			<button
+        id="open-a11y"
+        hidden
+      >
+        Accessibility Settings
+      </button>
+      <div class="a11y-panel">
+        <h2>
+          Accessibility Settings
+
+          <button
+            id="close-a11y"
+            class="link"
+            style="font-weight: normal; float: right; padding-left: 1rem"
+          >
+            hide
+          </button>
+        </h2>
+        <div>
+          <button id="theme-toggle" class="link">Light Mode</button>
+          <button id="increase-contrast" class="link">High Contrast</button>
+          <button id="toggle-crt" class="link">Turn off CRT Effect</button>
+            <div class="font-panel">
+              <button id="sans" class="link sans">Sans</button>
+              <button id="serif" class="link serif">Serif</button>
+              <button id="mono" class="link mono">Mono</button>
+              <button id="dyslexic" class="link dyslexic">Dyslexic</button>
+            </div>
+        </div>
+      </div>
+		</header>
+
+		<main id="main">
+			<heading-anchors>
+				{{ content | safe }}
+			</heading-anchors>
+		</main>
+
+		<footer>
+			<p>
+				<em>Built with <a href="https://www.11ty.dev/">{{ eleventy.generator }}</a></em>
+			</p>
+		</footer>
+
+		<!-- This page `{{ page.url }}` was built on {% currentBuildDate %} -->
+		<script type="module" src="{% getBundleFileUrl "js" %}"></script>
+	</body>
+</html>

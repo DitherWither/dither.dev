@@ -30,6 +30,7 @@ export default async function (eleventyConfig) {
 			"./public/": "/",
 		})
 		.addPassthroughCopy("./fonts/*")
+		.addPassthroughCopy("./miku-shrine")
 		.addPassthroughCopy("./content/feed/pretty-atom-feed.xsl");
 
 	// Run Eleventy when these files change:
@@ -83,7 +84,7 @@ export default async function (eleventyConfig) {
 			language: "en",
 			title: "Blog Title",
 			subtitle: "This is a longer description about your blog.",
-			base: "https://example.com/",
+			base: "https://dither.dev/",
 			author: {
 				name: "Your Name",
 			},

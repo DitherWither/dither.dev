@@ -5,18 +5,19 @@ const crtToggle = document.getElementById("toggle-crt");
 themeToggle.addEventListener("click", () => {
 	document.documentElement.classList.toggle("light");
 	document.documentElement.classList.toggle("dark");
-	const newMode = localStorage.getItem("mode") == "dark" ? "light" : "dark";
-	localStorage.setItem("mode", newMode);
-	themeToggle.textContent = `${newMode == "dark" ? "Light" : "Dark"} Mode`;
+	const mode = localStorage.getItem("mode");
+	localStorage.setItem("mode", mode == "dark" ? "light" : "dark");
+	themeToggle.textContent = `${mode.charAt(0).toUpperCase()}${mode.slice(
+		1
+	)} Mode`;
 });
 contrastToggle.addEventListener("click", () => {
 	document.documentElement.classList.toggle("high-contrast");
-	const newSetting =
-		localStorage.getItem("contrast") == "high" ? "standard" : "high";
-	localStorage.setItem("contrast", newSetting);
-	contrastToggle.textContent = `${
-		newSetting == "high" ? "Standard" : "High"
-	} Contrast`;
+	const setting = localStorage.getItem("contrast");
+	localStorage.setItem("contrast", setting == "high" ? "standard" : "high");
+	contrastToggle.textContent = `${setting
+		.charAt(0)
+		.toUpperCase()}${setting.slice(1)} Contrast`;
 });
 crtToggle.addEventListener("click", () => {
 	document.querySelector("body").classList.toggle("crt");

@@ -239,10 +239,10 @@ header {
 
 /* Nav */
 .nav {
-	display: flex;
-	gap: 0.5em 1em;
 	padding: 0;
 	margin: 0;
+	display: flex;
+	gap: 0.5em 1em;
 	list-style: none;
 }
 .nav-item {

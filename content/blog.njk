@@ -1,0 +1,11 @@
+---js
+// Not currently uesed because we don't have enough pages to fill the homepage
+// const eleventyNavigation = {
+//	key: "Archive",
+//	order: 2
+//};
+---
+<h1>Archive</h1>
+
+{% set postslist = collections.posts %}
+{% include "postslist.njk" %}
